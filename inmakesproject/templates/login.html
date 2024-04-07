@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="custom.css">
+<title> hi </title>
+</head>
+<style>/* General styles */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Structure the login page */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Style the form area */
+.form {
+  width: 300px;
+  padding: 20px;
+  background: #f7f7f7;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+/* Style the login header */
+.login-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Style the input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+/* Style the login button */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #5c6bc0;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #3f51b5;
+}
+
+/* Style the message for account creation */
+.message {
+  text-align: center;
+  font-size: 14px;
+}
+
+.message a {
+  color: #5c6bc0;
+  text-decoration: none;
+}
+
+.message a:hover {
+  text-decoration: underline;
+}
+
+</style>
+
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <div class="login">
+          <div class="login-header">
+            <h3>LOGIN</h3>
+            <p>Please enter your credentials to login.</p>
+          </div>
+        </div>
+        <form action="loginuser" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="enter your username"><br>
+    <input type="password" name="password" placeholder="enter your password"><br>
+          <button>login</button>
+          <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title> CSS Login Screen Tutorial </title>
+</head>
+<style>/* General styles *//* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for the registration container */
+.registration {
+  width: 300px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.register-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.register-header p {
+  margin: 5px 0 20px;
+  color: #666;
+}
+
+/* Form styling */
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Button styling */
+.form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #4cae4c;
+}
+
+
+</style>
+<body>
+    <div class="registration">
+      <div class="form">
+        <div class="register">
+          <div class="register-header">
+            <h3>REGISTER</h3>
+            <p>Please enter your details</p>
+          </div>
+        </div>
+        <form action="registerationn" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="enter your name"><br>
+    <input type="text" name="firstname" placeholder="enter your first name"><br>
+    <input type="text" name="lastname" placeholder="enter your last name"><br>
+    <input type="email" name="email" placeholder="enter your email"><br>
+    <input type="password" name="password" placeholder="enter your password"><br>
+    <input type="password" name="password1" placeholder="confirm password"><br>
+
+          <button>register</button>
+             <a href="{% url 'credential:loginuser'  %}" class="btn btn-primary">login</a>
+        </form>
+          {% for msg in messages %}
+          {{msg}}
+          {% endfor %}
+      </div>
+    </div>
+</body>
+</html>

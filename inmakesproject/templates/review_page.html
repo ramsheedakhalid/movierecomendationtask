@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review and Rating Page</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.review {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+/* Rating Stars */
+.rating {
+    color: gold;
+    font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="row my_prod_row_class">
+    <div class="mx_auto">
+        <p><a href="{% url 'inmakesprojectapp:allMovieCat' %}">HOME</a></p>
+    </div>
+
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.description }}</p>
+    <h2>Write a Review</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+<h2>Reviews</h2>
+    {% for review in reviews %}
+    {% if review.title.id == movie.id %}
+
+        <div class="review">
+
+            <p>Rating: {{review.rating }} Stars</p>
+            <p>Comment: {{ review.comment }}</p>
+            <p>Submitted by: {{review.user.username }}</p>
+            <p>On: {{ review.created_at }}</p>
+        </div>
+     {% endif %}
+
+    {% endfor %}
+
+
+
+
+
+
+
+</body>
+</html>
